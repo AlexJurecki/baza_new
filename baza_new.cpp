@@ -76,11 +76,40 @@ public:
 			cin >> b;
 			cout << endl << "Podaj Date produkcji:\t";
 			cin >> c;
+			try {
+				if (c < 1886) {
+					throw c;}
+				}
+			catch (int ex) {
+				cout << "Exception - the first car  " << endl << " the Benz Patent-Motorwagen was built in 1886" << endl;
+				c = 1886;
+			}
+
+
 			cout << endl << "Podaj pojemnosc:\t";
+
 			cin >> d;
+			try {
+				if (d <= 0) {
+					throw d;
+				}
+			}
+			catch (double ex) {
+				cout << "Exception - pojemnosc is not  " <<d << " you're wrong!" << endl;
+				d = 100;
+			}
 			cout << endl << "Podaj moc:\t";
+
 			cin >> e;
-			
+			try {
+				if (e <= 0) {
+					throw e;
+				}
+			}
+			catch (double ex) {
+				cout << "Exception - power is not  " << e << " you're wrong!" << endl;
+				e = 50;
+			}
 			switch (type) {
 			case 'M':
 				cout << endl << "Podaj bool Boxer:\t";
