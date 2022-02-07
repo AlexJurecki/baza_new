@@ -34,6 +34,12 @@ public:
 		Katalog.back()->setId(numer);
 		numer += 1;
 	}
+
+	template<typename tname>
+	void getcin(tname& arg) {
+			cin >> arg;
+				}
+
 	void dodaj(char type)
 	{
 		//string	a="BMW";
@@ -48,8 +54,16 @@ public:
 		string question;
 		cin >> question;
 		if ((question == "yes") || (question == "y")) {
-			Katalog.push_back(make_shared<Motocykl>());
-
+			switch (type) {
+			case 'M': Katalog.push_back(make_shared<Motocykl>());
+				break;
+				
+			case 'O': Katalog.push_back(make_shared<Osobowy>());
+				break;
+					
+			case 'L': Katalog.push_back(make_shared<LKW>());
+				break;
+			}
 		}
 		else {
 			string a, b;
@@ -71,21 +85,23 @@ public:
 			case 'M':
 				cout << endl << "Podaj bool Boxer:\t";
 				bool f;
-				cin >> f;
+				getcin(f);
+				//f=<int>getcin();
+			//	cin >> f;
 				Katalog.push_back(make_shared<Motocykl>(a, b, c, d, e, f));
 				
 				break;
 			case 'O':
 				cout << endl << "Podaj int pasazerowie:\t";
 				int ff;
-				cin >> ff;
+				getcin(ff);
 				Katalog.push_back(make_shared<Osobowy>(a, b, c, d, e, ff));
 				
 				break;
 			case 'L':
 				cout << endl << "Podaj double ladunek:\t";
 				double fff;
-				cin >> fff;
+				getcin(fff);
 				Katalog.push_back(make_shared<LKW>(a, b, c, d, e, fff));
 				
 				break;
@@ -130,6 +146,19 @@ public:
 		cout << "ITITIT"<<it;
 		return
 	}*/
+
+	template <typename T>
+	T more(T x) {
+		
+		auto it = count_if(
+				Katalog.begin(),
+				Katalog.end(),
+				[x](shared_ptr<Pojazd>& arg) {if (is_same<T, double>::value) return (arg->getPower() > x); else if (is_same<T, int>::value) return (arg->getData()>x); });
+				return it;
+			
+	}
+
+
 
 
 	void dodaj_cechy() {
@@ -232,7 +261,10 @@ public:
 	//	else {	cout << "Element is not present in the given baza danych";	}
 
 		auto it = find_if(Katalog.begin(), Katalog.end(), [wanted_id](const shared_ptr<Pojazd>& arg) {return arg->getId() == wanted_id; });
+		//auto b=in_range(Katalog.begin(), Katalog.end(), [wanted_id](const shared_ptr<Pojazd>& arg) {return arg->getId()==; });
 		//cout << *it;
+		
+		
 		Katalog.erase(it);
 
 	}
@@ -489,6 +521,25 @@ public:
 
 				cout << endl;
 			}
+
+			if (akcje == "more") {
+				cout << "Which variable? Data (d)or Power(p)?\t" << endl;
+				char type;
+				cin >> type;
+				if (type == 'p') {
+					cout << endl << "Power bigger than...? Gimme double\t";
+					double limit;
+					cin >> limit;
+					cout << " There are more than " << A.more(limit) << " vehciles that meet the criteria" << endl; ;
+				}
+				else {
+					cout << endl << "Data bigger than...? Gimme int\t";
+					int limit;
+					cin >> limit;
+					cout << " There are more than " << A.more(limit) << " vehciles that meet the criteria" << endl;
+				}
+			}
+
 			if (akcje == "write") {
 				A.Write();
 				cout << "write" << endl;
