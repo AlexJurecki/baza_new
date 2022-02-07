@@ -36,8 +36,11 @@ public:
 	list<string> getCechy() const { return cechy; }////
 	const string getModel() const { return model; }//int
 	const string getMarka() const { return marka; }//int
+	const char getTyp()  const { return typ; }
 	void setId(int ID) { id = ID; }
+	void setTyp(char t) { typ = t; }
 	void setCechy() {
+
 		cout << "Max 3 cechy!" << endl;
 		for (int i = 0; i < 3; ++i) {
 
@@ -80,6 +83,7 @@ private:
 	int liczba_cech;
 	int wiek = 2022 - data;
 	bool diesel;
+	char typ;
 	int id;
 	list<string> cechy;
 
@@ -99,7 +103,7 @@ Pojazd& operator++(Pojazd& L) {
 
 class Motocykl :public Pojazd {
 public:
-	const char typ = 'M';//static
+	//const char typ = 'M';//static
 	Motocykl() :Pojazd((Random_MarkaM()), (Random_ModelM()), (Random_Data()), (Random_Poj()), (Random_Power())), boxer(Random_Boxer()) {}
 	Motocykl(string mar, string mod, int dat, double poj, double pow, bool b) :Pojazd(mar, mod, dat, poj, pow), boxer(b) {}
 	virtual void print() { cout << "\tBoxer?:\t" << boxer << endl; }
@@ -111,20 +115,24 @@ private:
 
 class Osobowy :public Pojazd {
 public:
+//	const char typ = 'O';//static
 	Osobowy() :Pojazd((Random_MarkaO()), (Random_ModelO()), (Random_Data()), (Random_Poj()), (Random_Power())), pasazerowie(Random_Pasazerowie()) {}
 	Osobowy(string mar, string mod, int dat, double poj, double pow, int p) :Pojazd(mar, mod, dat, poj, pow), pasazerowie(p) {}
 	virtual void print() { cout << "\tPasazerowie?:\t" << pasazerowie << endl; }
 	virtual~Osobowy() { cout << "Bye osobowy" << endl; }
+	int getPasazerowie() { return pasazerowie; }
 private:
 	int pasazerowie;
 
 };
 class LKW :public Pojazd {
 public:
+	//const char typ = 'P';//static
 	LKW() :Pojazd((Random_MarkaL()), (Random_ModelL()), (Random_Data()), (Random_Poj()), (Random_Power())), ladunek(Random_Ladunek()) {}
 	LKW(string mar, string mod, int dat, double poj, double pow, double l) :Pojazd(mar, mod, dat, poj, pow), ladunek(l) {}
 	virtual void  print() { cout << "\tLadunek?:\t" << ladunek << endl; }
 	virtual ~LKW() { cout << "Bye lkw" << endl; }
+	double getLadunek() { return ladunek; }
 private:
 	double ladunek;
 

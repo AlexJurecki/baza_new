@@ -16,12 +16,25 @@
 class Data {
 public:
 	Data() { cout << "Welcome to the Data!" << endl; }
-	void dodaj_random() {
-		Katalog.push_back(make_shared<Motocykl>());
+	void dodaj_random(char  type) {
+		switch (type) {
+		case 'M':
+			Katalog.push_back(make_shared<Motocykl>());
+			
+			break;
+		case 'O':
+			Katalog.push_back(make_shared<Osobowy>());
+			break;
+		case 'L':
+			Katalog.push_back(make_shared<LKW>());
+			break;
+
+		}
+		Katalog.back()->setTyp(type);
 		Katalog.back()->setId(numer);
 		numer += 1;
 	}
-	void dodaj()
+	void dodaj(char type)
 	{
 		//string	a="BMW";
 		//string b="K1200";
@@ -42,7 +55,7 @@ public:
 			string a, b;
 			int c;
 			double d, e;
-			bool f;
+			
 			cout << endl << "Podaj marke:\t";
 			cin >> a;
 			cout << "Podaj model:\t";
@@ -53,11 +66,36 @@ public:
 			cin >> d;
 			cout << endl << "Podaj moc:\t";
 			cin >> e;
-			cout << endl << "Podaj parametr:\t";
-			cin >> f;
+			
+			switch (type) {
+			case 'M':
+				cout << endl << "Podaj bool Boxer:\t";
+				bool f;
+				cin >> f;
+				Katalog.push_back(make_shared<Motocykl>(a, b, c, d, e, f));
+				
+				break;
+			case 'O':
+				cout << endl << "Podaj int pasazerowie:\t";
+				int ff;
+				cin >> ff;
+				Katalog.push_back(make_shared<Osobowy>(a, b, c, d, e, ff));
+				
+				break;
+			case 'L':
+				cout << endl << "Podaj double ladunek:\t";
+				double fff;
+				cin >> fff;
+				Katalog.push_back(make_shared<LKW>(a, b, c, d, e, fff));
+				
+				break;
 
-			Katalog.push_back(make_shared<Motocykl>(a, b, c, d, e, f));
+			}
+			
+
+			//Katalog.push_back(make_shared<Motocykl>(a, b, c, d, e, f));
 		}
+		Katalog.back()->setTyp(type);
 		Katalog.back()->setId(numer);
 		numer += 1;
 		//Vehicles.push_back(make_unique<Motocykl>(a, b, c, d, e, f));
@@ -103,7 +141,8 @@ public:
 	const void drukuj() {
 		for (int i = 0; i < size(Katalog); ++i) {
 			//Vehicles[i].print();
-			cout << Katalog[i]->getId() << "\t";
+			cout << Katalog[i]->getId();
+			cout <<" ( "<< Katalog[i]->getTyp()<<" )"<< "\t";
 			Katalog[i]->print();
 			//	cout << "\tCechy:";
 				//list<string>::iterator it = Katalog[i]->getCechy().begin();
@@ -113,7 +152,24 @@ public:
 
 				//dynamic_pointer_cast<Motocykl>(Katalog[i])->print();
 				//dynamic_pointer_cast<Pojazd>(Katalog[i])->print();
-			static_pointer_cast<Motocykl>(Katalog[i])->print();
+			switch (Katalog[i]->getTyp()) {
+			case 'M':
+
+				static_pointer_cast<Motocykl>(Katalog[i])->print();
+				break;
+			case 'O':
+
+				static_pointer_cast<Osobowy>(Katalog[i])->print();
+				break;
+			case 'L':
+
+				static_pointer_cast<LKW>(Katalog[i])->print();
+				break;
+
+			}
+
+
+			//static_pointer_cast<Motocykl>(Katalog[i])->print();
 			//static_pointer_cast<Pojazd>(Katalog[i])->print();
 			//static_cast<Pojazd>(Vehicles[i]).print();
 			//cout << Katalog[i].getBool()<<
@@ -187,7 +243,7 @@ public:
 		{
 			int size_of_database = size(Katalog);
 			File.write((char*)&size_of_database, sizeof(size_of_database));
-			cout << size_of_database;
+			cout << size_of_database << endl;
 			for (int i = 0; i < size(Katalog); ++i) {
 				//Vehicles[i].print();
 				//cout << Katalog[i]->getId() << "\t";
@@ -216,11 +272,23 @@ public:
 
 
 				//dynamic_pointer_cast<Pojazd>(Katalog[i])->print();
-				if (static_pointer_cast<Motocykl>(Katalog[i])->typ == 'M') {
+				if ((Katalog[i])->getTyp() == 'M') {
 					char typ = 'M';
 					File.write((char*)&typ, sizeof(typ));
 					bool box = static_pointer_cast<Motocykl>(Katalog[i])->getBool();
 					File.write((char*)&box, sizeof(box));
+				}
+				else if ((Katalog[i])->getTyp()== 'O') {
+					char typ = 'O';
+					File.write((char*)&typ, sizeof(typ));
+					int pas = static_pointer_cast<Osobowy>(Katalog[i])->getPasazerowie();
+					File.write((char*)&pas, sizeof(pas));
+				}
+				else if ((Katalog[i])->getTyp() == 'L') {
+					char typ = 'L';
+					File.write((char*)&typ, sizeof(typ));
+					double lad = static_pointer_cast<LKW>(Katalog[i])->getLadunek();
+					File.write((char*)&lad, sizeof(lad));
 				}
 
 
@@ -238,7 +306,7 @@ public:
 		{
 			int size_of_database;
 			File.read((char*)&size_of_database, sizeof(size_of_database));
-			cout << endl << "Size of databse " << size_of_database;
+			cout << endl << "Size of databse " << size_of_database<<endl;
 			for (int i = 0; i < size_of_database; i++) {
 
 				int id, da; double pow, poj; char typ; string mod, mar;
@@ -268,6 +336,21 @@ public:
 					//string mar, string mod, int dat, double poj, double pow, bool b
 					//Katalog.push_back(make_shared<Motocykl>(a, b, c, d, e, f));
 				}
+				else if (typ == 'O') {
+					int pas;
+					File.read((char*)&pas, sizeof(pas));
+					Katalog.push_back(make_shared<Osobowy>(mar, mod, da, poj, pow, pas));
+					//string mar, string mod, int dat, double poj, double pow, bool b
+					//Katalog.push_back(make_shared<Motocykl>(a, b, c, d, e, f));
+				}
+				else if (typ == 'L') {
+					double lad;
+					File.read((char*)&lad, sizeof(lad));
+					Katalog.push_back(make_shared<Motocykl>(mar, mod, da, poj, pow, lad));
+					//string mar, string mod, int dat, double poj, double pow, bool b
+					//Katalog.push_back(make_shared<Motocykl>(a, b, c, d, e, f));
+				}
+				Katalog.back()->setTyp(typ);
 				Katalog.back()->setId(numer);
 				numer += 1;
 
@@ -350,11 +433,27 @@ public:
 				cout << endl;
 			}
 			if (akcje == "m") {
-				A.dodaj();
+				A.dodaj('M');
 				cout << endl;
 			}
 			if (akcje == "rm") {
-				A.dodaj_random();
+				A.dodaj_random('M');
+				cout << endl;
+			}
+			if (akcje == "o") {
+				A.dodaj('O');
+				cout << endl;
+			}
+			if (akcje == "ro") {
+				A.dodaj_random('O');
+				cout << endl;
+			}
+			if (akcje == "l") {
+				A.dodaj('L');
+				cout << endl;
+			}
+			if (akcje == "rl") {
+				A.dodaj_random('L');
 				cout << endl;
 			}
 			if (akcje == "time") {
