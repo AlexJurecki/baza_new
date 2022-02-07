@@ -346,7 +346,7 @@ public:
 				else if (typ == 'L') {
 					double lad;
 					File.read((char*)&lad, sizeof(lad));
-					Katalog.push_back(make_shared<Motocykl>(mar, mod, da, poj, pow, lad));
+					Katalog.push_back(make_shared<LKW>(mar, mod, da, poj, pow, lad));
 					//string mar, string mod, int dat, double poj, double pow, bool b
 					//Katalog.push_back(make_shared<Motocykl>(a, b, c, d, e, f));
 				}
