@@ -15,7 +15,7 @@ public:
 	Konsola() {}
 
 	void akcja() {
-		//int stan = 1;
+		
 		string akcje;
 		cout << "Welcome to Bjarne Inc." << endl;
 
@@ -56,11 +56,11 @@ public:
 				A.timeflow();
 				cout << endl;
 			}
-			if (akcje == "sort") {
+			/*if (akcje == "sort") {
 				A.sortuj();
 				A.drukuj();
 				cout << endl;
-			}
+			}*/
 			if (akcje == "sortby") { //sortowanie po zmiennej + drukowanie
 				A.sortby();
 				A.drukuj();
@@ -74,13 +74,13 @@ public:
 				A.eraser(nr);
 				cout << endl;
 			}
-			if (akcje == "max") {
+			/*if (akcje == "max") {
 				cout << "Which maximum?" << endl;
 				string aux;
 				cin >> aux;
 				//A.maxi(Pojazd::getPower());
 				cout << endl;
-			}
+			}*/
 
 			if (akcje == "more") {//sprawdz, ile pojazdow ma wiekszy rok/moc
 				cout << "Which variable? Data (d)or Power(p)?\t" << endl;
@@ -96,7 +96,7 @@ public:
 					cout << endl << "Data bigger than...? Gimme int\t";
 					int limit;
 					cin >> limit;
-					cout << " There are more than " << A.more(limit) << " vehciles that meet the criteria" << endl;
+					cout << " There are " << A.more(limit) << " vehicles that meet the criteria >" <<limit << endl;
 				}
 			}
 

@@ -147,7 +147,7 @@ public:
 
 	void timeflow() { //funkcja wplywajaca na atrybut wiek - zwieksza go o jeden
 
-		for (auto& it : Katalog) {
+		for (auto& it : Katalog) { //ranged based loop
 
 			++(*it);
 			it->print();
@@ -158,7 +158,7 @@ public:
 	/*
 	template <typename T> //to sie akurat nie udalo
 	//void maxi(const T (*func)()){
-	T maxi(const string& str){
+	T maxi(const string& str){//template bioracy funkcje jako argument
 
 		//auto it = max(Katalog.begin(), Katalog.end(), [&](shared_ptr<Pojazd>& arg1, shared_ptr<Pojazd>& arg2) {return arg1->func() > arg2->func(); });
 		if (str=="power")
@@ -185,6 +185,7 @@ public:
 
 
 
+
 	const void drukuj() {//funkcja drukujaca
 		for (int i = 0; i < size(Katalog); ++i) {
 			cout << Katalog[i]->getId();
@@ -208,13 +209,14 @@ public:
 			}
 		}
 	}
+	
 
 
-
+	/*
 	const void sortuj() {
 		//sort(Katalog.begin(), Katalog.end());
 		sort(Katalog.begin(), Katalog.end());
-	}
+	}*/
 
 
 
