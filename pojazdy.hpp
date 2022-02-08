@@ -13,15 +13,7 @@
 
 using namespace std;
 
-/*
-template<typename D, typename B>
-unique_ptr<D> static_cast_ptr(unique_ptr<B>& base) {
-	return unique_ptr<D>(static_cast<D*>(base.release()));
-}
-template<typename D, typename B>
-unique_ptr<D> static_cast_ptr(unique_ptr<B>&& base) {
-	return unique_ptr<D>(static_cast<D*>(base.release()));
-}*/
+
 
 class Pojazd {
 public:

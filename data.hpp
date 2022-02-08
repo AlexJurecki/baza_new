@@ -6,7 +6,6 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
-//#include <memory>
 #include <cstring>
 
 
@@ -111,6 +110,9 @@ public:
 				cout << "Exception - power is not  " << e << " you're wrong!" << endl;
 				e = 50;
 			}
+
+
+
 			switch (type) { //czesc parametrow nalezy do dziedziczacych klas, ponizej wpisywane sa ich param zaleznie od zadanego typu
 			case 'M':
 				cout << endl << "Podaj bool Boxer:\t"; //motocykl ma atrybut bool

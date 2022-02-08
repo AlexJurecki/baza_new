@@ -4,71 +4,6 @@
 #include <string>
 #include <sstream>
 
-std::string Random_j()
-{
-    std::vector<std::string> first_names{
-    "Honda",
-    "Toyota",
-    "BMW",
-    "Mercedes",
-    "Ford",
-    "Daimler",
-    "Kawasaki",
-    "Suzuki",
-    "Lada",
-    "Fiat",
-    "Ferrari",
-    "Porsche",
-    "Volvo",
-    "KIA",
-    "Chevrolet",
-    "Jeep",
-    "Dacia",
-    "Subaru",
-
-    };
-
-    std::vector<std::string> last_names{
-    "Hendricks",
-    "Smith",
-    "Gates",
-    "Stein",
-    "Warren",
-    "Booker",
-    "Williamson",
-    "Walters",
-    "Dunn",
-    "Swanson",
-    "Knope",
-    "Haverford",
-    "Ludgate",
-    "Meagle",
-    "Favreau",
-    "Vietor",
-    "Lovett",
-    "Pfeifer",
-    "Rhodes",
-    "Abrams",
-    "McFaul",
-    "Stone",
-    "Sisley",
-    "Hanneman",
-    };
-    std::mt19937 generator(std::random_device{}());
-
-    std::uniform_int_distribution<std::size_t> fnd{ 0, first_names.size() - 1 };
-    std::uniform_int_distribution<std::size_t> lnd{ 0, last_names.size() - 1 };
-    //std::uniform_int_distribution<std::size_t> distribution(0, first_names.size() - 1);
-
-    std::size_t number_first_names = fnd(generator);
-    std::size_t number_last_names = lnd(generator);
-
-    std::stringstream Name;
-    Name << first_names[number_first_names] << ' ' <<
-        last_names[number_last_names];
-
-    return Name.str();
-}
 
 std::string Random_MarkaG()
 {
@@ -78,12 +13,10 @@ std::string Random_MarkaG()
    
     };
 
-    // gets 'entropy' from device that generates random numbers itself
-    // to seed a mersenne twister (pseudo) random generator
+
     std::mt19937 generator(std::random_device{}());
 
-    // make sure all numbers have an equal chance. 
-    // range is inclusive (so we need -1 for vector index)
+
     std::uniform_int_distribution<std::size_t> distribution(0, result.size() - 1);
 
     std::size_t number = distribution(generator);
@@ -100,12 +33,9 @@ std::string Random_ModelG()
 
     };
 
-    // gets 'entropy' from device that generates random numbers itself
-    // to seed a mersenne twister (pseudo) random generator
+
     std::mt19937 generator(std::random_device{}());
 
-    // make sure all numbers have an equal chance. 
-    // range is inclusive (so we need -1 for vector index)
     std::uniform_int_distribution<std::size_t> distribution(0, result.size() - 1);
 
     std::size_t number = distribution(generator);
@@ -135,12 +65,10 @@ std::string Random_MarkaO()
 
     };
 
-    // gets 'entropy' from device that generates random numbers itself
-    // to seed a mersenne twister (pseudo) random generator
+
     std::mt19937 generator(std::random_device{}());
 
-    // make sure all numbers have an equal chance. 
-    // range is inclusive (so we need -1 for vector index)
+
     std::uniform_int_distribution<std::size_t> distribution(0, result.size() - 1);
 
     std::size_t number = distribution(generator);
@@ -163,12 +91,10 @@ std::string Random_MarkaM()
 
     };
 
-    // gets 'entropy' from device that generates random numbers itself
-    // to seed a mersenne twister (pseudo) random generator
+
     std::mt19937 generator(std::random_device{}());
 
-    // make sure all numbers have an equal chance. 
-    // range is inclusive (so we need -1 for vector index)
+
     std::uniform_int_distribution<std::size_t> distribution(0, result.size() - 1);
 
     std::size_t number = distribution(generator);
@@ -274,12 +200,10 @@ std::string Random_ModelL()
  
     };
 
-    // gets 'entropy' from device that generates random numbers itself
-    // to seed a mersenne twister (pseudo) random generator
+
     std::mt19937 generator(std::random_device{}());
 
-    // make sure all numbers have an equal chance. 
-    // range is inclusive (so we need -1 for vector index)
+
     std::uniform_int_distribution<std::size_t> distribution(0, result.size() - 1);
 
     std::size_t number = distribution(generator);
