@@ -10,7 +10,20 @@
 //#include <cstring>
 
 
+/*
+-polimorfizm
+-dziedziczenie
+-shared_ptr
+-static_cast
+-template
+-exception
+-find_if, sort, count_if
+-lambda
+-przeciozony operator
+-zapis/odczyt - format binarny
+-dodanie/usuwanie elementow wektora
 
+*/
 
 
 
