@@ -1,15 +1,20 @@
 ﻿#include "baza_new.h"
-#include "pojazdy.hpp"
-#include "randomgen.h"
-#include <vector>
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <algorithm>
-//#include <memory>
-#include <cstring>
+#include "konsola.hpp"
+//#include "randomgen.h"
+//#include <vector>
+//#include <string>
+//#include <iostream>
+//#include <fstream>
+//#include <algorithm>
+
+//#include <cstring>
 
 
+
+
+
+
+/*
 class Data {
 public:
 
@@ -154,7 +159,7 @@ public:
 		}
 	}
 
-
+	*/
 	/*
 	template <typename T> //to sie akurat nie udalo
 	//void maxi(const T (*func)()){
@@ -171,7 +176,7 @@ public:
 	}*/
 
 
-
+/*
 	template <typename T>
 	T more(T x) { //template pozwala na porownanie mocy lub daty, zalezne od wyboru zastosujemy int lub double
 		
@@ -376,6 +381,7 @@ private:
 	vector  <shared_ptr<Pojazd>> Katalog; //glowny wektor do trzymania pojazdow
 	int numer = 1; //pomocniczy numerator do nadawnia ID
 };
+*/
 
 
 
@@ -384,8 +390,7 @@ private:
 
 
 
-
-
+/*
 class Konsola {
 public:
 	Data A;
@@ -502,7 +507,7 @@ public:
 private:
 
 };
-
+*/
 int main()
 {
 
@@ -526,14 +531,14 @@ int main()
 	f->print();
 	static_cast<Pojazd*>(f)->print();
 	*/
-	vector <Pojazd> VVV;
-	VVV.push_back(Pojazd());
-	VVV.push_back(Pojazd());
-	for (auto& it : VVV) {
-		it.print();
-		++(it);
-		it.print();
-	}//alternative
+	//vector <Pojazd> VVV;
+	//VVV.push_back(Pojazd());
+	//VVV.push_back(Pojazd());
+	//for (auto& it : VVV) {
+	//	it.print();
+	//	++(it);
+	//	it.print();
+	//}//alternative
 
 	/* //trial trial
 	cout << "Hello CMake. POJAZD" << endl;
