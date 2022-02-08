@@ -7,7 +7,7 @@ poprawiona wersja 'baza'
 
 ### the newest version of cpp project - vehicle database
 
-**used elements:
+**used elements: **
 - polimorphism
 - inheritance
 - stl (find-if,sort, count_if)
