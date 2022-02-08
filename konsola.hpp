@@ -56,11 +56,7 @@ public:
 				A.timeflow();
 				cout << endl;
 			}
-			/*if (akcje == "sort") {
-				A.sortuj();
-				A.drukuj();
-				cout << endl;
-			}*/
+
 			if (akcje == "sortby") { //sortowanie po zmiennej + drukowanie
 				A.sortby();
 				A.drukuj();

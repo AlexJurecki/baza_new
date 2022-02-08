@@ -212,11 +212,7 @@ public:
 	
 
 
-	/*
-	const void sortuj() {
-		//sort(Katalog.begin(), Katalog.end());
-		sort(Katalog.begin(), Katalog.end());
-	}*/
+
 
 
 

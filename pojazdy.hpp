@@ -32,37 +32,15 @@ public:
 	const double getData() const { return data; }//int
 	const double getPower() const { return power; }//double
 	const double getPojemnosc() const { return pojemnosc; }//double
-	//list<string> getCechy() const { return cechy; }////
+
 	const string getModel() const { return model; }//string
 	const string getMarka() const { return marka; }//string
 	const char getTyp()  const { return typ; }
 	void setId(int ID) { id = ID; }
 	void setTyp(char t) { typ = t; }
 
-	/*void setCechy() {
 
-		cout << "Max 3 cechy!" << endl;
-		for (int i = 0; i < 3; ++i) {
 
-			string auxiliary;
-			cout << "Waiting for new cecha:" << endl;
-			cin >> auxiliary;
-			cechy.push_front(auxiliary);
-			cout << endl << "You want more? y/n" << endl;
-
-			cin >> auxiliary;
-
-			if (i != 2 && auxiliary == "n")
-			{
-				break;
-			}
-
-		}
-
-	}
-	*/
-	
-	//friend bool operator<(const Pojazd& P1, const Pojazd& P2);//sama deklaracja
 
 	void print() { cout << "Marka:" << marka << ", model:" << model << ", data:" << data << ", wiek:" << wiek << ", poj:" << pojemnosc << ", moc:" << power << endl; }
 	virtual ~Pojazd() { cout << "Bye Pojazd" << endl; }
@@ -87,10 +65,7 @@ Pojazd& operator++(Pojazd& L) {//oeprator ++ dla pojazdow, wykorzystamy go do fu
 	return L;
 }
 
-/*
-bool operator<(const Pojazd& P1, const Pojazd& P2) {
-	return (P1.power < P2.power);
-}*/
+
 
 
 class Motocykl :public Pojazd {
